@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
+import { ProductShowcase } from "@/components/landing/ProductShowcase";
 import { LogoCloud } from "@/components/landing/LogoCloud";
 import { Features } from "@/components/landing/Features";
 import { HowItWorks } from "@/components/landing/HowItWorks";
@@ -28,6 +29,7 @@ export default function Home() {
 
       {/* Main content sections */}
       <main>
+        <ProductShowcase />
         <LogoCloud />
         <Features />
         <HowItWorks />
