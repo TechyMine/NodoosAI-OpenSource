@@ -15,6 +15,7 @@ from slowapi.errors import RateLimitExceeded
 # Ensure backend root is in path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from api.health import router as health_router
 from api.routes import router as legacy_router
 from api.slack_routes import router as slack_router
 from api.account_routes import router as account_router
@@ -109,6 +110,7 @@ async def log_requests(request: Request, call_next):
     return response
 
 # ── Routers ────────────────────────────────────────────────────
+app.include_router(health_router)
 app.include_router(legacy_router)
 app.include_router(slack_router)
 app.include_router(account_router)

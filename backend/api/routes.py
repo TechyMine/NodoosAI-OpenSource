@@ -17,10 +17,7 @@ from typing import Tuple
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api", tags=["agent"])
 
-
-@router.get("/health")
-async def health_check():
-    return {"status": "ok", "service": "Nodoos AI Agent Service", "version": "3.0"}
+from api.health import health_check
 
 
 @router.post("/agent/run")
