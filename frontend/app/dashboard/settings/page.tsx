@@ -6,7 +6,7 @@ import { Settings, User, Building, Users, Slack, CreditCard, CheckCircle, AlertC
 import { createClient } from "@/lib/supabase/client";
 import { fetchSlackIntegration, disconnectSlack, fetchOrgMembers, fetchOrg } from "@/lib/api";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").replace(/\/+$/, "");
 
 function SettingsTabsContent() {
   const searchParams = useSearchParams();

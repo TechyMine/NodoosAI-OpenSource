@@ -5,7 +5,7 @@ import { Zap, AlertTriangle, CheckCircle, ShieldAlert, Edit2, Check, X } from "l
 import { fetchPlaybooks, type PlaybookRule } from "@/lib/api";
 import { createClient } from "@/lib/supabase/client";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").replace(/\/+$/, "");
 
 const PLAYBOOK_OPTIONS = [
   "EXECUTIVE_ESCALATION",

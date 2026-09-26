@@ -45,7 +45,7 @@ export function createClient() {
         };
       },
       signInWithPassword: async ({ email, password }: any) => {
-        const apiBase = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+        const apiBase = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").replace(/\/+$/, "");
         try {
           const res = await fetch(`${apiBase}/api/auth/login`, {
             method: "POST",
@@ -54,7 +54,12 @@ export function createClient() {
           });
           if (!res.ok) {
             const err = await res.json().catch(() => ({}));
-            return { data: null, error: { message: err.detail || "Invalid credentials" } };
+            return {
+              data: null,
+              error: {
+                message: err.detail || (res.status === 404 ? `Backend endpoint not found at ${apiBase}/api/auth/login. Please verify NEXT_PUBLIC_API_URL.` : "Invalid credentials")
+              }
+            };
           }
           const data = await res.json();
           const token = data.access_token;

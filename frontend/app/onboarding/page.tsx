@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Zap, ArrowRight, MessageSquare, CheckCircle2, Bell, ShieldCheck } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").replace(/\/+$/, "");
 
 export default function OnboardingPage() {
   const router = useRouter();

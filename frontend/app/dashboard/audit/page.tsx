@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { History, Download, Search, ChevronLeft, ChevronRight, ChevronDown, CheckCircle2, AlertTriangle, Clock } from "lucide-react";
 import { fetchActionsLog, type AuditAction } from "@/lib/api";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").replace(/\/+$/, "");
 
 const PLAYBOOKS = [
   "EXECUTIVE_ESCALATION", "DEDICATED_CSM_ASSIGNMENT", "EXECUTIVE_DISCOUNT_REVIEW",
